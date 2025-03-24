@@ -21,7 +21,7 @@ jobs:
               run: chmod +x bash.sh
 
             - name: Run test script
-              run: ./bash.sh "$TEST_VALUE"
+              run: ./bash.sh "$TEST_VALUE1" "$TEST_VALUE2"
               env:
                 TEST_VALUE1: ${{ inputs.a }}
                 TEST_VALUE2: ${{ inputs.b }}
