@@ -9,8 +9,6 @@ jobs:
     strategy:
       matrix:
         test_cases: [1,2,4,5,7]
-    steps:
-      - name: run the test 
-        uses: Pritam1729/testing/.github/workflows/work.yml@main 
-        with:
-            test: ${{ matrix.test_cases }}
+    uses: Pritam1729/testing/.github/workflows/work.yml@main 
+    with:
+        test: ${{ matrix.test_cases }}
