@@ -20,6 +20,6 @@ jobs:
             - name: run test 
               run: |
                 chmod +x bash.sh
-                ./bash.sh TEST 
+                ./bash.sh $NAME 
               env:
                 NAME: ${{ inputs.test }}
