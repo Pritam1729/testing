@@ -2,17 +2,20 @@ name: work
 
 on:
     workflow_call: 
-        inputs:
-            a:
-                required: true
-                type: number
-            b:
-                required: true
-                type: number
-
 jobs: 
     test: 
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                include:
+                    - a: 10
+                      b: 2
+                    - a: 11
+                      b: 1
+                    - a: 12
+                      b: 0
+                    - a: 13
+                      b: 0
         steps: 
             - name: Checkout the repository
               uses: actions/checkout@v4
@@ -23,5 +26,5 @@ jobs:
             - name: Run test script
               run: ./bash.sh "$TEST_VALUE1" "$TEST_VALUE2"
               env:
-                TEST_VALUE1: ${{ inputs.a }}
-                TEST_VALUE2: ${{ inputs.b }}
+                TEST_VALUE1: ${{ matrix.a }}
+                TEST_VALUE2: ${{ matrix.b }}
