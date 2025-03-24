@@ -11,15 +11,20 @@ jobs:
     build_the_repo:
         runs-on: ubuntu-latest
         steps:
-            - name: build the repo
+            - name: Checkout the repository
               uses: actions/checkout@v4
+
     test: 
         runs-on: ubuntu-latest
         needs: [build_the_repo]
         steps: 
-            - name: run test 
-              run: |
-                chmod +x bash.sh
-                ./bash.sh $NAME 
+            - name: Checkout the repository
+              uses: actions/checkout@v4
+
+            - name: Make script executable
+              run: chmod +x bash.sh
+
+            - name: Run test script
+              run: ./bash.sh "$TEST_VALUE"
               env:
-                NAME: ${{ inputs.test }}
+                TEST_VALUE: ${{ inputs.test }}
