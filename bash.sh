@@ -1,6 +1,5 @@
 #!/bin/bash
-
-if [ "$1" -lt 12 ]; then
+if [ $(($1 + $2)) -eq 12 ]; then
   echo "TEST PASSED"
   exit 0
 fi
