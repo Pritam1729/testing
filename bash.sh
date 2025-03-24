@@ -4,5 +4,6 @@ if [ $(($1 + $2)) -eq 12 ]; then
   exit 0
 fi
 
+echo "SOME THING IS WRONG"
 echo "TEST FAILED"
 exit 1
