@@ -8,6 +8,7 @@ on:
 jobs: 
   test:
     strategy:
+      fail-fast: false
       matrix:
         test_cases: [1,2,4,5,10]
     uses: Pritam1729/testing/.github/workflows/work.yml@main 
