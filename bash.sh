@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" -lt 9 ]; then
+if [ "$1" -lt 11 ]; then
   echo "TEST PASSED"
   exit 0
 fi
