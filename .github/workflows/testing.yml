@@ -7,19 +7,5 @@ on:
 
 jobs: 
   test:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-            - a: 10
-              b: 2
-            - a: 8
-              b: 4
-            - a: 9
-              b: 3
-            - a: 10
-              b: 3
     uses: Pritam1729/testing/.github/workflows/work.yml@main 
-    with:
-        a: ${{ matrix.a }}
-        b: ${{ matrix.b }}
+    
