@@ -1,0 +1,25 @@
+name: work 
+
+on:
+    workflow_call: 
+        inputs:
+            test:
+                required: true
+                type: number
+
+jobs: 
+    build_the_repo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: build the repo
+              uses: actions/checkout@v4
+    test: 
+        runs-on: ubuntu-latest
+        needs: [build_the_repo]
+        steps: 
+            - name: run test 
+              run: |
+                chmod +x bash.sh
+                ./bash.sh TEST 
+              env:
+                NAME: ${{ inputs.test }}
