@@ -3,7 +3,10 @@ name: work
 on:
     workflow_call: 
         inputs:
-            test:
+            a:
+                required: true
+                type: number
+            b:
                 required: true
                 type: number
 
@@ -20,4 +23,5 @@ jobs:
             - name: Run test script
               run: ./bash.sh "$TEST_VALUE"
               env:
-                TEST_VALUE: ${{ inputs.test }}
+                TEST_VALUE1: ${{ inputs.a }}
+                TEST_VALUE2: ${{ inputs.b }}
