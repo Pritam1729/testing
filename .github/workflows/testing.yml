@@ -1,0 +1,16 @@
+name: testing
+
+on:
+  workflow_dispatch
+
+jobs: 
+  test:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        test_cases: [1,2,4,5,7]
+    steps:
+      - name: run the test 
+        uses: Pritam1729/testing/.github/workflows/work.yml@main 
+        with:
+            test: ${{ matrix.test_cases }}
