@@ -10,7 +10,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        test_cases: [1,2,4,5,10]
+        include:
+            - a: 10
+              b: 2
+            - a: 8
+              b: 4
+            - a: 9
+              b: 3
+            - a: 10
+              b: 3
     uses: Pritam1729/testing/.github/workflows/work.yml@main 
     with:
-        test: ${{ matrix.test_cases }}
+        a: ${{ matrix.a }}
+        b: ${{ matrix.b }}
