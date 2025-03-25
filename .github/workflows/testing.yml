@@ -16,7 +16,7 @@ jobs:
              b: 0
            - a: 9
              b: 3
-    uses: Pritam1729/testing2/.github/workflows/work.yml@main 
+    uses: Pritam1729/testing2/.github/workflows/worker.yml@main 
     with:
       a: ${{matrix.a}}
       b: ${{matrix.b}}
