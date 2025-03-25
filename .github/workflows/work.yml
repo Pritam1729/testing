@@ -7,6 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
+                fast-fail: false
                 include:
                     - a: 10
                       b: 2
