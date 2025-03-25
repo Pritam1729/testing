@@ -8,8 +8,8 @@ on:
 jobs: 
   test:
     strategy:
+      fast-fail: false
       matrix:
-        fast-fail: false
         include:
            - a: 10
              b: 2
