@@ -8,6 +8,6 @@ if [ $(($1 + $2)) -eq 13 ]; then
   exit 0
 fi
 
-echo "SOME THIN IS WRON"
+echo "SOME THING IS WRON"
 echo "TEST FAILED"
 exit 1
