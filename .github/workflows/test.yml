@@ -9,18 +9,30 @@ jobs:
           - num: 10
             result: "success"
           - num: 11
-            result: "failed"
+            result: "failure"
     steps:
-      - name: Step that might fail
-        id: failed
+      - name: check
+        id: testing
         continue-on-error: true
-        run: exit 1  
+        env:
+          INPUTS: ${{ matrix.num }}
+        run: |
+          if [ "$INPUTS" = 10 ]; {
+              exit 0
+          }
+          else {
+            exit 1
+          }
+          fi
 
       - name: Check outcome
+        env: 
+          OUTPUT: ${{ matrix.result }}
+          PREV_STEP_OUTCOME: ${{ steps.testing.outcome }}
         run: |
-          if [ "${{ steps.failed.outcome }}" = "failure" ]; then
-            echo "THIS SHOULD NOT FAIL"
+          if [ "$PREV_STEP_OUTCOME" = OUTPUT ]; then
+            echo "The Test Has Passed"
           else
-            echo "THIS SHOULD HAVE FAILED"
+            echo "The Test has Failed"
             exit 1
           fi
