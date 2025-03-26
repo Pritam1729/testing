@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "Hello from Testing"
+echo "Hello fro Testing"
