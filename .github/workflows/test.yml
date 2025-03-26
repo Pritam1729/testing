@@ -30,7 +30,7 @@ jobs:
           OUTPUT: ${{ matrix.result }}
           PREV_STEP_OUTCOME: ${{ steps.testing.outcome }}
         run: |
-          if [ "$PREV_STEP_OUTCOME" = OUTPUT ]; then
+          if [ "$PREV_STEP_OUTCOME" = "$OUTPUT" ]; then
             echo "The Test Has Passed"
           else
             echo "The Test has Failed"
