@@ -13,4 +13,12 @@ jobs:
           run: exit 1
         - name: this should not fail
           id: success
-          run: exit 0
+          run: |
+            if [ "$(steps.failed.outcome)" == failed ]; {
+                echo "THIS SHOULD NOT FAIL"
+            }
+            else {
+                echo "THIS SHOULD HAVE FAILED"
+                exit 1
+            }
+            fi
