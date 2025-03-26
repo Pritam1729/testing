@@ -3,6 +3,13 @@ on: workflow_dispatch
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - num: 10
+            result: "success"
+          - num: 11
+            result: "failed"
     steps:
       - name: Step that might fail
         id: failed
