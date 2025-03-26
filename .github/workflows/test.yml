@@ -9,6 +9,7 @@ jobs:
       steps:
         - name: this should fail
           id: failed
+          continue-on-error: true
           run: exit 1
         - name: this should not fail
           id: success
