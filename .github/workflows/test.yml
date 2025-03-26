@@ -9,7 +9,7 @@ jobs:
         include:
           - num: 10
             result: "success"
-          - num: 11
+          - num: 10
             result: "failure"
     steps:
       - name: check
