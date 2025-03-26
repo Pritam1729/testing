@@ -1,1 +1,15 @@
+name: tester
 
+on:
+  workflow-dispatch
+
+jobs: 
+  test:
+      run-ons: ubuntu:latest
+      steps:
+        - name: this should fail
+          id: failed
+          run: exit 1
+        - name: this should not fail
+          id: success
+          run: exit 0
