@@ -4,6 +4,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - num: 10
@@ -17,12 +18,10 @@ jobs:
         env:
           INPUTS: ${{ matrix.num }}
         run: |
-          if [ "$INPUTS" = 10 ]; {
+          if [ "$INPUTS" = 10 ]; then 
               exit 0
-          }
-          else {
+          else 
             exit 1
-          }
           fi
 
       - name: Check outcome
