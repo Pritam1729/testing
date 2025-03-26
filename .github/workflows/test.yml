@@ -1,24 +1,19 @@
-name: tester
-
-on:
-  workflow_dispatch
-
-jobs: 
+name: TEST
+on: workflow_dispatch
+jobs:
   test:
-      runs-on: ubuntu-latest
-      steps:
-        - name: this should fail
-          id: failed
-          continue-on-error: true
-          run: exit 1
-        - name: this should not fail
-          id: success
-          run: |
-            if [ "$(steps.failed.outcome)" == failed ]; {
-                echo "THIS SHOULD NOT FAIL"
-            }
-            else {
-                echo "THIS SHOULD HAVE FAILED"
-                exit 1
-            }
-            fi
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step that might fail
+        id: failed
+        continue-on-error: true
+        run: exit 1  
+
+      - name: Check outcome
+        run: |
+          if [ "${{ steps.failed.outcome }}" = "failure" ]; then
+            echo "THIS SHOULD NOT FAIL"
+          else
+            echo "THIS SHOULD HAVE FAILED"
+            exit 1
+          fi
