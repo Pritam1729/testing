@@ -9,8 +9,8 @@ jobs:
         include:
           - num: 10
             result: "success"
-          - num: 10
-            result: "failure"
+          - num: 11
+            result: "success"
     steps:
       - name: check
         id: testing
