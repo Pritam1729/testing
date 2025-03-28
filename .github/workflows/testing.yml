@@ -1,22 +1,32 @@
-name: testing
+name: Create Pull Request
 
 on:
-  pull_request:
-    branches:
-      - 'main'
+  workflow_dispatch:  
 
-jobs: 
-  test:
-    strategy:
-      matrix:
-        include:
-           - a: 10
-             b: 2
-           - a: 12
-             b: 0
-           - a: 9
-             b: 3
-    uses: Pritam1729/testing2/.github/workflows/worker.yml@main 
-    with:
-      a: ${{matrix.a}}
-      b: ${{matrix.b}}
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  
+
+      - name: Make Changes
+        run: |
+          echo "Some changes" >> changes.txt
+          git add .
+          git commit -m "Automated changes"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: test
+          base: main 
+          title: "Automated Pull Request"
+          body: "This is an automated PR created by GitHub Actions."
+          labels: "automation, bot"
+          assignees: "your-username"
+
