@@ -10,4 +10,4 @@ fi
 
 echo "SOME THIN IS WRON"
 echo "TEST FAILED"
-exit 1
+exit 1   
