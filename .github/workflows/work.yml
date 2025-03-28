@@ -7,7 +7,7 @@ on:
 
 jobs: 
     TEST:
-        if: github.base_ref == 'main' && startsWith(github.head_ref, 'oneday')
+        if: startsWith(github.head_ref, 'oneday')
         runs-on: ubuntu-latest
         steps:
             - name: one
