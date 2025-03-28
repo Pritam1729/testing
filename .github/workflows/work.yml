@@ -1,31 +1,14 @@
 name: work 
 
 on:
-    workflow_call: 
+    pull_request:
+        branches: 
+            - main
+
 jobs: 
-    test: 
+    TEST:
+        if: github.base_ref == 'main' && startsWith(github.head_ref, 'oneday')
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                fast-fail: false
-                include:
-                    - a: 10
-                      b: 2
-                    - a: 11
-                      b: 1
-                    - a: 12
-                      b: 0
-                    - a: 13
-                      b: 0
-        steps: 
-            - name: Checkout the repository
-              uses: actions/checkout@v4
-
-            - name: Make script executable
-              run: chmod +x bash.sh
-
-            - name: Run test script
-              run: ./bash.sh "$TEST_VALUE1" "$TEST_VALUE2"
-              env:
-                TEST_VALUE1: ${{ matrix.a }}
-                TEST_VALUE2: ${{ matrix.b }}
+        steps:
+            - name: one
+              run: echo "${{ github.head_ref }}" "${{ github.base_ref }}"
