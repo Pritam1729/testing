@@ -7,7 +7,7 @@ on:
 
 jobs: 
     TEST:
-        if: startsWith(github.head_ref, 'oneday')
+        if: startsWith(github.head_ref, 'oneday1')
         runs-on: ubuntu-latest
         steps:
             - name: one
