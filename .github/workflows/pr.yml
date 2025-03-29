@@ -1,7 +1,7 @@
 name: Create PR from t1 to main
 
 on:
-  workflow_dispatch:  # Manually triggered
+  workflow_dispatch:
 
 jobs:
   create-pr:
@@ -13,20 +13,13 @@ jobs:
         with:
           fetch-depth: 0  # Ensures all branches are fetched
 
-      - name: Configure Git Identity
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/pull-request-action@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
-          branch: t1
+          head: t1
           title: "Merge t1 into main"
           body: "This PR was automatically created by GitHub Actions."
           labels: "automated-pr"
           draft: false  # Set to true if you want the PR to be a draft
-          commit-user-name: "github-actions[bot]"
-          commit-user-email: "github-actions[bot]@users.noreply.github.com"
